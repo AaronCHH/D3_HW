@@ -1,0 +1,16 @@
+/* .black{
+  visibility: visible;
+  outline: gold dashed 2px;
+} */
+
+
+.black~.col{
+  visibility: visible;
+  outline: gold dashed 2px;
+}
+
+
+.black~.white{
+  visibility: visible;
+  outline: gold dashed 2px;
+}

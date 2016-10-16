@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+
+  <script src="./script.js">
+//     alert("Hello, JS 1!") // if use src, no show of this.
+  </script>
+</head>
+<!-- ++++++ -->
+
+<body>
+<!-- case 1 -->
+  <script>
+    alert("Hello, JS 2!")
+  </script>
+<!-- case 2 -->
+  <script>
+    showMsg();
+  </script>
+<!-- case 3 -->
+  <script>
+    var hello = "JS";
+    showMsg2("hello");
+  </script>
+<!-- case 4 -->
+  <script>
+    var hello = "好好玩";
+    showMsg3("JS", hello);    
+  </script>
+  
+<!-- case 5 -->
+  <script>
+    var hello = "好好玩!!";
+    result = showMsg4("JS", hello);    
+    alert(result)
+  </script>  
+</body>
+
+</html>
