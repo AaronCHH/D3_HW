@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="https://d3js.org/d3.v3.min.js"></script>
+</head>
+
+<body>
+  <svg></svg>
+  <script>
+    d3.select("svg")
+      .append("circle")
+      .attr("cx", 150)
+      .attr("cy", 120)
+      .attr("r", 15);
+    d3.select("svg")
+      .append("rect")
+      .attr("x", 160)
+      .attr("y", 45)
+      .attr("height", 75)
+      .attr("width", 5)
+  </script>
+</body>
+
+</html>

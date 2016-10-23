@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="https://d3js.org/d3.v3.min.js"></script>
+</head>
+
+<body>
+  <script>
+    var arr = [85, 60, 99, 49, 77, 59];
+    var body = d3.select("body");
+    for (var i = 0; i < arr.length; i++) {
+      if (arr[i] < 60) {
+        body.append("div").text(arr[i]).style({
+          color: "red"
+        });
+
+      } else {
+        body.append("div").text(arr[i]);
+      }
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,14 @@
+myShoes = {
+  brand: "Adidas",
+  size: 11,
+  price: 2000,
+  forFemale: false
+}
+
+myShoes.color = ["black", "gold"]
+
+myShoes.prevShoes
+
+var prevShoes={brand:"nike"}
+
+myShoes.prevShoes = prevShoes
