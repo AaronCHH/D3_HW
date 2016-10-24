@@ -18,7 +18,11 @@
 ---
 ## Homework 1
 1.關關  
+<<<<<<< HEAD
   [Github](https://github.com/AaronCHH/D3_HW/blob/gh-pages/hw01/hw01_1/index.html)  
+=======
+  [Github](https://github.com/AaronCHH/D3_HW/blob/gh-pages/hw01/hw01_1/index.html)   
+>>>>>>> dfe37274afabe9a268215da28ec79218b58ad542
 	[GitPage](https://aaronchh.github.io/D3_HW/hw01/hw01_1/)
 
 2.小王子  
@@ -31,9 +35,21 @@
 	[GitPage](https://aaronchh.github.io/D3_HW/hw02/hw02_1/) 
 
 2.N~M之間的亂數  
-  [Github](https://github.com/AaronCHH/D3_HW/tree/gh-pages/hw02/hw02_2/rand.js)
+  [Github](https://github.com/AaronCHH/D3_HW/tree/gh-pages/hw02/hw02_2/rand.js)  
+	[GitPage] N/A  
 
 3.一個亂數函式: random(n, m) 可以在chrome console測試  
   [Github](https://github.com/AaronCHH/D3_HW/tree/gh-pages/hw02/hw02_3/script.js)  
 	[GitPage](https://aaronchh.github.io/D3_HW/hw02/hw02_3/) PS. Push F12 to test     
 
+<<<<<<< HEAD
+=======
+## Homework 3
+1.五線譜  
+  [Github](https://github.com/AaronCHH/D3_HW/blob/gh-pages/hw03/hw03_1/index.html)  
+	[GitPage](https://aaronchh.github.io/D3_HW/hw03/hw03_1/)    
+
+2.亂數長條圖  
+  [Github](https://github.com/AaronCHH/D3_HW/blob/gh-pages/hw03/hw03_2/index.html)  
+	[GitPage](https://aaronchh.github.io/D3_HW/hw03/hw03_2/)    
+>>>>>>> dfe37274afabe9a268215da28ec79218b58ad542

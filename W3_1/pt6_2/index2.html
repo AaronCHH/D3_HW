@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <title>Document</title>
   <script src="https://d3js.org/d3.v3.min.js"></script>
+  <!--  <script src="../d3/d3.js"></script>-->
   <style>
     svg {
       height: 500px;
@@ -14,22 +15,25 @@
 </head>
 
 <body>
-  <svg></svg>
+  <svg>
+    <!--
+    <text x="100" y="200" font-size="40" font-family="arial">
+      Hello SVG
+    </text>
+-->
+  </svg>
   <script>
-  
     d3.select("svg")
       .append("circle")
       .attr("cx", 150)
       .attr("cy", 120)
       .attr("r", 15);
-
     d3.select("svg")
       .append("rect")
       .attr("x", 160)
       .attr("y", 45)
       .attr("height", 75)
       .attr("width", 5);
-
     for (var i = 0; i < 5; i++) {
       d3.select("svg").append("line").attr({
         x1: 50,
@@ -40,7 +44,6 @@
         stroke: "black",
       });
     };
-
     d3.select("svg").append("text").text("A").attr({
       x: 140,
       y: 220,
