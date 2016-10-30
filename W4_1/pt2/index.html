@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="https://d3js.org/d3.v3.min.js"></script>
+  <script src="pt2.js"></script>
+</head>
+
+<body>
+  <div></div>
+  <script>
+    var t = 0;
+    console.log("1"+t);
+    d3.json("invoice2016.json", function(dataSet) {
+//      console.log(dataSet);
+      console.log(dataSet[9999].industry); 
+        
+    });
+  </script>
+</body>
+
+</html>

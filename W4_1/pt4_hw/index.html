@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="https://d3js.org/d3.v3.min.js"></script>
+  <script src="pt1.js"></script>
+</head>
+
+<body>
+  <div></div>
+  <script>
+    d3.json("invoice-taipei.json", function (dataSet) {
+      var body = d3.select("body");
+      for (var i = 0; i < dataSet.length; i++) {
+        if ( dataSet[i].amount > 1000000000 ) {
+          body.append("div").text(i + ':' + dataSet[i].number + ',' + dataSet[i].industry);
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>
