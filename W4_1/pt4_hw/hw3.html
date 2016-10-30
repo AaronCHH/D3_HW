@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>d3-start</title>
+  <script src="https://d3js.org/d3.v3.js"></script>
+  
+  <style>
+    div {
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+  <svg width="400" height="300">
+  
+  </svg>
+
+  <script>
+    d3.json("invoice-taipei.json", function (dataSet) {
+      var svg = d3.select("svg");
+      var count = 0;
+      for (var i = 0; i < dataSet.length; i++) {
+        if (parseInt(dataSet[i].amount) > 1000000000) {
+          d3.select("svg")
+            .append("rect")
+            .attr({
+              x: 100,
+              y: 10 + 12 * count,
+              width: parseInt(dataSet[i].amount) / 1000000000,
+              height: 10,
+              fill: "red"
+            });
+          d3.select("svg")
+            .append("text")
+            .attr({
+              x: 0,
+              y: 16 + 12 * count,
+              "font-size": 5
+            }).text(dataSet[i].industry);
+          count = count + 1;
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>
