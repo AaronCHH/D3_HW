@@ -1,0 +1,1 @@
+var fScale = d3.scale.category10();
