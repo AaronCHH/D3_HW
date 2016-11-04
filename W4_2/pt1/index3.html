@@ -5,20 +5,25 @@
   <meta charset="UTF-8">
   <title>Document</title>
   <script src="https://d3js.org/d3.v3.min.js"></script>
+  <script src="index3.js"></script>
 </head>
 
 <body>
-    
-  <script>
-    var arr = [85, 60, 99, 49, 77, 82];
-    d3.select("body")
-      .selectAll("div")
-      .data(arr)
-      .text(function (d) {
-        return d;
-      });
 
-    console.log(d3.selectAll("div"));
+  <script>
+    var val1 = d3.max(arr);
+    var val2 = d3.max(dataSet, function(d) {
+      return d.tall;
+    });
+    var val3 = d3.min(arr);
+    var val4 = d3.min(dataSet, function(d) {
+      return d.age;
+    });    
+    d3.select("body").append("div").append("text").text(val1);
+    d3.select("body").append("div").append("text").text(val2);
+    d3.select("body").append("div").append("text").text(val3);
+    d3.select("body").append("div").append("text").text(val4);
+
   </script>
 </body>
 

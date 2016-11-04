@@ -5,32 +5,15 @@
   <meta charset="UTF-8">
   <title>Document</title>
   <script src="https://d3js.org/d3.v3.min.js"></script>
+  <script src="index4.js"></script>
 </head>
 
 <body>
-  <div></div>
-  <div></div>
 
   <script>
-    var arr = [85, 60, 99, 49, 77, 82];
-    d3.select("body")
-      .selectAll("div")
-      .data(arr)
 
-    selection.text(function(d){
-      return ":" + d;
-    })
-    
-    selection.enter().append("div").text(function(d){
-      return ":" + d;
-    })
-    
-    Selection.exit().remove();
-    
-    
-//    selection. ? ? ? ;
-//    selection.enter(). ? ? ? ;
-//    selection.exit(). ? ? ? ;
+    d3.select("body").append("div").append("text").text(xScale(0));
+
   </script>
 </body>
 
