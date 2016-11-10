@@ -3,10 +3,10 @@
   <title></title>
   <layer-tree-group expanded="1" checked="Qt::Checked" name="">
     <customproperties/>
-    <layer-tree-layer expanded="1" checked="Qt::Checked" id="cid20161110234356221" name="cid">
+    <layer-tree-layer expanded="1" checked="Qt::Checked" id="68102opendata420161111032019572" name="68102opendata4">
       <customproperties/>
     </layer-tree-layer>
-    <layer-tree-layer expanded="1" checked="Qt::Checked" id="68102opendata220161110234343847" name="68102opendata2">
+    <layer-tree-layer expanded="1" checked="Qt::Checked" id="gid20161111032018064" name="gid">
       <customproperties/>
     </layer-tree-layer>
   </layer-tree-group>
@@ -14,10 +14,10 @@
   <mapcanvas>
     <units>degrees</units>
     <extent>
-      <xmin>-0.82199546485260755</xmin>
-      <ymin>-0.27891156462585021</ymin>
-      <xmax>1.17800453514739245</xmax>
-      <ymax>1.72108843537414979</ymax>
+      <xmin>-0.41497792099295783</xmin>
+      <ymin>0.51056211958467612</ymin>
+      <xmax>1.58502207900704217</xmax>
+      <ymax>2.51056211958467612</ymax>
     </extent>
     <rotation>0</rotation>
     <projections>0</projections>
@@ -38,30 +38,30 @@
   </mapcanvas>
   <layer-tree-canvas>
     <custom-order enabled="0">
-      <item>68102opendata220161110234343847</item>
-      <item>cid20161110234356221</item>
+      <item>gid20161111032018064</item>
+      <item>68102opendata420161111032019572</item>
     </custom-order>
   </layer-tree-canvas>
   <legend updateDrawingOrder="true">
-    <legendlayer drawingOrder="-1" open="true" checked="Qt::Checked" name="cid" showFeatureCount="0">
+    <legendlayer drawingOrder="-1" open="true" checked="Qt::Checked" name="68102opendata4" showFeatureCount="0">
       <filegroup open="true" hidden="false">
-        <legendlayerfile isInOverview="0" layerid="cid20161110234356221" visible="1"/>
+        <legendlayerfile isInOverview="0" layerid="68102opendata420161111032019572" visible="1"/>
       </filegroup>
     </legendlayer>
-    <legendlayer drawingOrder="-1" open="true" checked="Qt::Checked" name="68102opendata2" showFeatureCount="0">
+    <legendlayer drawingOrder="-1" open="true" checked="Qt::Checked" name="gid" showFeatureCount="0">
       <filegroup open="true" hidden="false">
-        <legendlayerfile isInOverview="0" layerid="68102opendata220161110234343847" visible="1"/>
+        <legendlayerfile isInOverview="0" layerid="gid20161111032018064" visible="1"/>
       </filegroup>
     </legendlayer>
   </legend>
   <projectlayers>
     <maplayer minimumScale="-4.65661e-10" maximumScale="1e+08" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
-      <id>68102opendata220161110234343847</id>
-      <datasource>./68102opendata2.csv</datasource>
+      <id>68102opendata420161111032019572</id>
+      <datasource>./68102opendata4.csv</datasource>
       <keywordList>
         <value></value>
       </keywordList>
-      <layername>68102opendata2</layername>
+      <layername>68102opendata4</layername>
       <srs>
         <spatialrefsys>
           <proj4>+proj=longlat +datum=WGS84 +no_defs</proj4>
@@ -79,11 +79,11 @@
         <property key="variableValues" value=""/>
       </customproperties>
       <provider encoding="System">ogr</provider>
-      <previewExpression>COALESCE("year", '&lt;NULL>')||', '||COALESCE("gender", '&lt;NULL>')||', '||COALESCE("city", '&lt;NULL>')||', '||COALESCE("cancer", '&lt;NULL>')||', '||COALESCE("年齡標準化發生率WHO2000世界標準人口(每10萬人口)", '&lt;NULL>')||', '||COALESCE("cancercount", '&lt;NULL>')||', '||COALESCE("ageavg", '&lt;NULL>')||', '||COALESCE("agemedium", '&lt;NULL>')||', '||COALESCE("grossrate(10million)", '&lt;NULL>')</previewExpression>
+      <previewExpression>COALESCE("year", '&lt;NULL>')||', '||COALESCE("gender", '&lt;NULL>')||', '||COALESCE("city", '&lt;NULL>')||', '||COALESCE("cancer", '&lt;NULL>')||', '||COALESCE("年齡標準化發生率WHO2000世界標準人口(每10萬人口)", '&lt;NULL>')||', '||COALESCE("cancercount", '&lt;NULL>')||', '||COALESCE("ageavg", '&lt;NULL>')||', '||COALESCE("agemedium", '&lt;NULL>')||', '||COALESCE("grossrate(10million)", '&lt;NULL>')||', '||COALESCE("cid", '&lt;NULL>')||', '||COALESCE("gid", '&lt;NULL>')</previewExpression>
       <vectorjoins>
-        <join hasCustomPrefix="1" joinFieldName="city" customPrefix="" targetFieldName="city" memoryCache="1" joinLayerId="cid20161110234356221">
+        <join hasCustomPrefix="1" joinFieldName="gender" customPrefix="" targetFieldName="gender" memoryCache="1" joinLayerId="gid20161111032018064">
           <joinFieldsSubset>
-            <field name="cid"/>
+            <field name="gid"/>
           </joinFieldsSubset>
         </join>
       </vectorjoins>
@@ -121,6 +121,9 @@
           <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
         </edittype>
         <edittype widgetv2type="TextEdit" name="cid">
+          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="gid">
           <widgetv2config IsMultiline="0" fieldEditable="0" UseHtml="0" labelOnTop="0"/>
         </edittype>
       </edittypes>
@@ -158,12 +161,12 @@ def my_form_open(dialog, layer, feature):
       </conditionalstyles>
     </maplayer>
     <maplayer minimumScale="0" maximumScale="1e+08" geometry="No geometry" type="vector" hasScaleBasedVisibilityFlag="0">
-      <id>cid20161110234356221</id>
-      <datasource>./cid.csv</datasource>
+      <id>gid20161111032018064</id>
+      <datasource>./gid.csv</datasource>
       <keywordList>
         <value></value>
       </keywordList>
-      <layername>cid</layername>
+      <layername>gid</layername>
       <srs>
         <spatialrefsys>
           <proj4>+proj=longlat +datum=WGS84 +no_defs</proj4>
@@ -186,10 +189,10 @@ def my_form_open(dialog, layer, feature):
         <map-layer-style name=""/>
       </map-layer-style-manager>
       <edittypes>
-        <edittype widgetv2type="TextEdit" name="city">
+        <edittype widgetv2type="TextEdit" name="gender">
           <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
         </edittype>
-        <edittype widgetv2type="TextEdit" name="cid">
+        <edittype widgetv2type="TextEdit" name="gid">
           <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
         </edittype>
       </edittypes>
