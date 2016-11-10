@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="https://d3js.org/d3.v3.min.js"></script>
+</head>
+
+<body>
+  <script>
+    var arr = [85, 60, 99, 49, 77, 82];
+    bind(arr);
+    render();
+
+    function bind(data) {
+      var selecYon = d3.select("body")
+        .selectAll("div")
+        .data(data);
+      selecYon.enter().append("div");
+      selecYon.exit().remove();
+    }
+
+    function render() {
+      d3.selectAll("div").text(function (d) {
+        return d;
+      })
+    }
+  </script>
+</body>
+
+</html>

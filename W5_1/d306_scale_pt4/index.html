@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="https://d3js.org/d3.v3.min.js"></script>
+</head>
+
+<body>
+  <script>
+//    define domain/range
+    var index = [0, 1, 2, 3, 4];
+    var color = ["red", "blue", "green", "yellow", "black"]
+    var xScale = d3.scale.ordinal()
+      .domain(index)
+      .range(color);
+    
+//    show result
+    console.log(xScale(3))
+    
+  </script>
+</body>
+
+</html>

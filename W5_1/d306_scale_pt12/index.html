@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="https://d3js.org/d3.v3.min.js"></script>
+</head>
+
+<body>
+  <script>
+    var arr2 = [
+      {
+        city: "台北市",
+        cid: "A"
+      },
+      {
+        city: "台中市",
+        cid: "B"
+      },
+      {
+        city: "台北市",
+        cid: "A"
+      },
+      {
+        city: "基隆市",
+        cid: "C"
+      }
+    ];
+
+    var arr3 = arr2.map(function (d) {
+      return d.cid;
+    });
+
+    console.log(arr3);
+
+    var arr4 = arr3.filter(function (d) {
+      return d != "A";
+    });
+
+    console.log(arr4);
+
+    var arr5 = unique(arr4);
+
+    console.log(arr5);
+
+    function unique(array) {
+      var n = [];
+      for (var i = 0; i < array.length; i++) {
+        if (n.indexOf(array[i]) == -1) {
+          n.push(array[i]);
+        }
+      }
+      return n;
+    }
+  </script>
+</body>
+
+</html>

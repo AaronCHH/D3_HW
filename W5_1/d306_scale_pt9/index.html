@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="https://d3js.org/d3.v3.min.js"></script>
+  <style>
+    .axis path,
+    .axis line {
+      fill: none;
+      stroke: black;
+      shape-rendering: auto;
+    }
+    
+    .axis text {
+      font-size: 11px;
+      fill: blue;
+    }
+  </style>
+</head>
+
+<body>
+  <script>
+    //  第1步-產⽣生軸線:
+    var xAxis = d3.svg.axis()
+      .scale(xScale)
+      .orient("right");
+    
+    //  第2步-畫在svg上
+    select("svg").append("g").call(xAxis);
+
+    //  第3步-css調整樣式
+    d3.select("svg")
+      .append("g")
+      .aVr("class", "axis")
+      .call(yAxis);
+
+    //  第4步-刻度數量量(參參考值):
+    var xAxis = d3.svg.axis()
+      .scale(xScale)
+      .orient("bottom")
+      .ticks(5);
+
+    .attr("transform", "translate(" + …)
+
+    //  第5步-軸線位移:
+    d3.select("svg")
+      .append("g")
+      .attr("class", "axis")
+      .attr("transform", "translate(" + x + "," + y + ")")
+      .call(yAxis);
+    
+  </script>
+</body>
+
+</html>

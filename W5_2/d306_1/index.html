@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="https://d3js.org/d3.v3.min.js"></script>
+</head>
+
+<body>
+  <script>
+    var arr1 = ["A", "B", "A", "C"];
+    var uniArr = unique(arr1);
+
+    console.log(uniArr);
+
+    function unique(array) {
+      var n = [];
+      for (var i = 0; i < array.length; i++) {
+        if (n.indexOf(array[i]) == -1) {
+          n.push(array[i]);
+        }
+      }
+      return n;
+    }
+  </script>
+</body>
+
+</html>
