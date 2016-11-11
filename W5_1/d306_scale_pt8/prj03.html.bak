@@ -51,8 +51,6 @@
     var letterList = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "M", "N", "O", "P", "Q", "T", "U", "V", "W", "X", "Z"];
     var genderList = ["M", "F"]
 
-		svg();
-		
     d3.csv("68102opendata6.csv", function (dataSet) {
       bind(dataSet);
       render(dataSet);
