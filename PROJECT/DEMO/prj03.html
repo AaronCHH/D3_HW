@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <title>Untitled Document</title>
   <script src="https://d3js.org/d3.v3.js"></script>
+<!--    <script src="./d3/d3.min.js"></script>-->
   <style>
     body {
       background: #eee;
@@ -52,7 +53,7 @@
     var letterList = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "M", "N", "O", "P", "Q", "T", "U", "V", "W", "X", "Z"];
     var genderList = ["M", "F"]
 
-    svg();
+    svg()
 
     d3.csv("68102opendata6.csv", function (dataSet) {
       bind(dataSet);
@@ -238,16 +239,16 @@
 
     function btnList(dataSet) {
 
-      //industryArr: 行業別陣列(包含重複項目)           
-      var industryArr = dataSet.map(function (d) {
+      //cancerArr: 癌症別陣列(包含重複項目)           
+      var cancerArr = dataSet.map(function (d) {
         return d.cancer;
       });
-      //uniqueIndustryArr: 行業別陣列(無重複項目) 
-      var uniqueIndustryArr = unique(industryArr);
+      //uniqueCancerArr: 癌症別陣列(無重複項目) 
+      var uniqueCancerArr = unique(cancerArr);
 
-      //filterIndustryArr: 行業別陣列(去除空白項目) 
-      var filterIndustryArr =
-        uniqueIndustryArr.filter(function (d) {
+      //filtercancerArr: 癌症別陣列(去除空白項目) 
+      var filtercancerArr =
+        uniqueCancerArr.filter(function (d) {
           return d != "";
         });
 
@@ -262,7 +263,7 @@
       var selection = d3.select("body")
         .append("div")
         .selectAll("input")
-        .data(filterIndustryArr);
+        .data(filtercancerArr);
       // 按鈕
       var selectionCity = d3.select("body")
         .append("div")
@@ -278,10 +279,10 @@
           }
         })
         .on("click", function (d) {
-          //當行業別按鈕按下時執行
+          //當癌症別按鈕按下時執行
           update(d);
         });
-                  
+
       selectionCity.enter()
         .append("input")
         .attr({
@@ -291,16 +292,16 @@
           }
         })
         .on("click", function (d) {
-          //當行業別按鈕按下時執行
+          //當癌症別按鈕按下時執行
           updateCity(d);
         });
 
       var subDataSet;
 
-      function update(industryName) {
-        //過濾行業別符合者
+      function update(cancerName) {
+        //過濾癌症別符合者
         var newDataSet = dataSet.filter(function (d) {
-          return d.cancer === industryName;
+          return d.cancer === cancerName;
         });
         //重新整理bind,render
         bind(newDataSet);
@@ -309,7 +310,7 @@
       }
 
       function updateCity(cityName) {
-        //過濾行業別符合者
+        //過濾癌症別符合者
         var newDataSet2 = subDataSet.filter(function (d) {
           return d.city === cityName;
         });
