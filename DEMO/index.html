@@ -1,0 +1,343 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Untitled Document</title>
+  <script src="https://d3js.org/d3.v3.js"></script>
+  <!--    <script src="./d3/d3.min.js"></script>-->
+  <style>
+    body {
+      background: #eee;
+    }
+    
+    .axis path,
+    .axis line {
+      fill: none;
+      stroke: black;
+      shape-rendering: auto;
+    }
+    
+    .axis text {
+      font-size: 12px;
+    }
+    
+    #tooltip {
+      position: absolute;
+      /* left: 20px; */
+      /* top:  100px; */
+      background: #fff;
+      width: 150px;
+      height: auto;
+      padding: 0px 10px;
+      border-radius: 5px;
+      box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+    }
+    
+    #tooltip.hidden {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="tooltip" class="hidden">
+    <p><strong id="city">Hello</strong></p>
+    <p id="industry">tooltip</p>
+    <p id="cancercount">cancercount</p>
+  </div>
+  <script>
+    var w = 800;
+    var h = 500;
+    var padding = 90;
+    var letterList = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "M", "N", "O", "P", "Q", "T", "U", "V", "W", "X", "Z"];
+    var genderList = ["M", "F"]
+
+    svg()
+
+    d3.csv("68102opendata6.csv", function (dataSet) {
+      bind(dataSet);
+      render(dataSet);
+      btnList(dataSet);
+    });
+
+    function svg() {
+      d3.select("body").append("svg").attr({
+        width: w,
+        height: h
+      });
+      d3.select("svg").append("g").append("rect").attr({
+        width: "100%",
+        height: "100%",
+        fill: "white"
+      });
+      d3.select("svg").append("g").attr("id", "axisX");
+      d3.select("svg").append("g").attr("id", "axisY");
+    }
+
+    function bind(dataSet) {
+      var selection = d3.select("svg")
+        .selectAll("circle")
+        .data(dataSet);
+      selection.enter().append("circle");
+      selection.exit().remove();
+    }
+
+    function render(dataSet) {
+      //比例尺們 xScale, yScale, rScale, fScale
+      var xScale = d3.time.scale()
+        .domain([new Date(d3.min(dataSet, function (d) {
+          return new Date(d.year);
+        })), new Date(d3.max(dataSet, function (d) {
+          return new Date(d.year);
+        }))])
+        .range([padding, w - padding]);
+
+      //      var yScale = d3.scale.linear()
+      //        .domain([0, d3.max(dataSet, function (d) {
+      //          return +d.ageavg;
+      //        })])
+      //        .range([h - padding, padding]);
+
+      var yScale = d3.scale.linear()
+        .domain([0, 100])
+        .range([h - padding, padding]);
+
+      var rScale = d3.scale.linear()
+        .domain([d3.min(dataSet, function (d) {
+          return +d.cancercount;
+        }), d3.max(dataSet, function (d) {
+          return +d.cancercount;
+        })])
+        .range([5, 20]);
+      var fScale = d3.scale.category20();
+
+      //開始畫圈圈
+      d3.selectAll("circle")
+        .transition()
+        .attr({
+          cx: function (d) {
+            return xScale(new Date(d.year));
+          },
+          cy: function (d) {
+            return yScale(+d.ageavg);
+          },
+          r: function (d) {
+            return rScale(+d.cancercount);
+          },
+          fill: function (d) {
+            return fScale(letterList.indexOf(d.cid));
+          }
+        });
+
+      d3.selectAll("circle")
+        .on("mouseover", function (d) {
+          var xPos =
+            parseFloat(d3.select(this).attr("cx")) + 12;
+          var yPos =
+            parseFloat(d3.select(this).attr("cy")) + 12;
+
+          d3.select("#tooltip").style({
+            left: xPos + "px",
+            top: yPos + "px"
+          });
+          d3.select("#city").text(d.city);
+          d3.select("#industry").text(d.cancer);
+          d3.select("#cancercount").text("案例數:" + d.cancercount);
+          d3.select("#tooltip").classed("hidden", false);
+
+        })
+        .on("mouseout", function (d) {
+          d3.select("#tooltip").classed("hidden", true);
+        });
+
+
+      //開始畫x,y軸線 
+      var xAxis = d3.svg.axis().scale(xScale).orient("bottom");
+      var yAxis = d3.svg.axis().scale(yScale).orient("left");
+      d3.select("svg")
+        .select("g#axisY")
+        .attr("class", "axis")
+        .attr("transform", "translate(" + (padding - 10) + ",0)")
+        .call(yAxis);
+      d3.select("svg")
+        .select("g#axisX")
+        .attr("class", "axis")
+        .attr("transform", "translate(0," + (h - padding + 10) + ")")
+        .call(xAxis);
+    }
+
+    function renderCity(dataSet) {
+      //比例尺們 xScale, yScale, rScale, fScale
+      var xScale = d3.time.scale()
+        .domain([new Date(d3.min(dataSet, function (d) {
+          return new Date(d.year);
+        })), new Date(d3.max(dataSet, function (d) {
+          return new Date(d.year);
+        }))])
+        .range([padding, w - padding]);
+
+      var yScale = d3.scale.linear()
+        .domain([0, 100])
+        .range([h - padding, padding]);
+
+      var rScale = d3.scale.linear()
+        .domain([d3.min(dataSet, function (d) {
+          return +d.cancercount;
+        }), d3.max(dataSet, function (d) {
+          return +d.cancercount;
+        })])
+        .range([5, 20]);
+      var fScale = d3.scale.category20();
+
+      //開始畫圈圈
+      d3.selectAll("circle")
+        .transition()
+        .attr({
+          cx: function (d) {
+            return xScale(new Date(d.year));
+          },
+          cy: function (d) {
+            return yScale(+d.ageavg);
+          },
+          r: function (d) {
+            return rScale(+d.cancercount);
+          },
+          fill: function (d) {
+            return fScale(genderList.indexOf(d.gid));
+          }
+        });
+
+      d3.selectAll("circle")
+        .on("mouseover", function (d) {
+          var xPos =
+            parseFloat(d3.select(this).attr("cx")) + 12;
+          var yPos =
+            parseFloat(d3.select(this).attr("cy")) + 12;
+
+          d3.select("#tooltip").style({
+            left: xPos + "px",
+            top: yPos + "px"
+          });
+          d3.select("#city").text(d.gender);
+          d3.select("#industry").text(d.cancer);
+          d3.select("#cancercount").text("案例數:" + d.cancercount);
+          d3.select("#tooltip").classed("hidden", false);
+
+        })
+        .on("mouseout", function (d) {
+          d3.select("#tooltip").classed("hidden", true);
+        })
+
+      //開始畫x,y軸線 
+      var xAxis = d3.svg.axis().scale(xScale).orient("bottom");
+      var yAxis = d3.svg.axis().scale(yScale).orient("left");
+      d3.select("svg")
+        .select("g#axisY")
+        .attr("class", "axis")
+        .attr("transform", "translate(" + (padding - 10) + ",0)")
+        .call(yAxis);
+      d3.select("svg")
+        .select("g#axisX")
+        .attr("class", "axis")
+        .attr("transform", "translate(0," + (h - padding + 10) + ")")
+        .call(xAxis);
+    }
+
+    function btnList(dataSet) {
+
+      //cancerArr: 癌症別陣列(包含重複項目)           
+      var cancerArr = dataSet.map(function (d) {
+        return d.cancer;
+      });
+      //uniqueCancerArr: 癌症別陣列(無重複項目) 
+      var uniqueCancerArr = unique(cancerArr);
+
+      //filtercancerArr: 癌症別陣列(去除空白項目) 
+      var filtercancerArr =
+        uniqueCancerArr.filter(function (d) {
+          return d != "";
+        });
+
+      //城市別
+      var cityArr = dataSet.map(function (d) {
+        return d.city;
+      })
+
+      var uniqueCityArr = unique(cityArr);
+
+      //畫出按鈕們
+      var selection = d3.select("body")
+        .append("div")
+        .selectAll("input")
+        .data(filtercancerArr);
+      // 按鈕
+      var selectionCity = d3.select("body")
+        .append("div")
+        .selectAll("input")
+        .data(uniqueCityArr);
+
+      selection.enter()
+        .append("input")
+        .attr({
+          type: "button",
+          value: function (d) {
+            return d;
+          }
+        })
+        .on("click", function (d) {
+          //當癌症別按鈕按下時執行
+          update(d);
+        });
+
+      selectionCity.enter()
+        .append("input")
+        .attr({
+          type: "button",
+          value: function (d) {
+            return d;
+          }
+        })
+        .on("click", function (d) {
+          //當癌症別按鈕按下時執行
+          updateCity(d);
+        });
+
+      var subDataSet;
+
+      function update(cancerName) {
+        //過濾癌症別符合者
+        var newDataSet = dataSet.filter(function (d) {
+          return d.cancer === cancerName;
+        });
+        //重新整理bind,render
+        bind(newDataSet);
+        render(newDataSet);
+        subDataSet = newDataSet;
+      }
+
+      function updateCity(cityName) {
+        //過濾癌症別符合者
+        var newDataSet2 = subDataSet.filter(function (d) {
+          return d.city === cityName;
+        });
+        //重新整理bind,render
+        bind(newDataSet2);
+        renderCity(newDataSet2);
+      }
+
+      function unique(array) {
+        var n = [];
+        for (var i = 0; i < array.length; i++) {
+          if (n.indexOf(array[i]) == -1) {
+            n.push(array[i]);
+          }
+        }
+        return n;
+      }
+    }
+  </script>
+
+</body>
+
+</html>
