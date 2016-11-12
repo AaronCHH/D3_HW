@@ -93,6 +93,12 @@
         }))])
         .range([padding, w - padding]);
 
+      //      var yScale = d3.scale.linear()
+      //        .domain([0, d3.max(dataSet, function (d) {
+      //          return +d.ageavg;
+      //        })])
+      //        .range([h - padding, padding]);
+
       var yScale = d3.scale.linear()
         .domain([0, 100])
         .range([h - padding, padding]);
@@ -135,7 +141,7 @@
             left: xPos + "px",
             top: yPos + "px"
           });
-          d3.select("#city").text(d.gender);
+          d3.select("#city").text(d.city);
           d3.select("#industry").text(d.cancer);
           d3.select("#cancercount").text("案例數:" + d.cancercount);
           d3.select("#tooltip").classed("hidden", false);
@@ -200,8 +206,28 @@
           fill: function (d) {
             return fScale(genderList.indexOf(d.gid));
           }
-        })
+        });
 
+      d3.selectAll("circle")
+        .on("mouseover", function (d) {
+          var xPos =
+            parseFloat(d3.select(this).attr("cx")) + 12;
+          var yPos =
+            parseFloat(d3.select(this).attr("cy")) + 12;
+
+          d3.select("#tooltip").style({
+            left: xPos + "px",
+            top: yPos + "px"
+          });
+          d3.select("#city").text(d.gender);
+          d3.select("#industry").text(d.cancer);
+          d3.select("#cancercount").text("案例數:" + d.cancercount);
+          d3.select("#tooltip").classed("hidden", false);
+
+        })
+        .on("mouseout", function (d) {
+          d3.select("#tooltip").classed("hidden", true);
+        })
 
       //開始畫x,y軸線 
       var xAxis = d3.svg.axis().scale(xScale).orient("bottom");
