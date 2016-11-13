@@ -271,6 +271,10 @@
         .append("div")
         .selectAll("input")
         .data(filtercancerArr);
+
+//      var label = d3.select("body")
+//        .append("div")
+
       // 按鈕
       var selectionCity = d3.select("body")
         .append("div")
@@ -289,6 +293,8 @@
           //當癌症別按鈕按下時執行
           update(d);
         });
+
+        d3.append("text").text("label")
 
       selectionCity.enter()
         .append("input")
